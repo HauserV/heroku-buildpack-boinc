@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# fail fast
+set -eu
+
+# parse args
+BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
+BUILD_DIR=${1:-}
+CACHE_DIR=${2:-}
+
+BP_BIN_DIR=$BP_DIR/.heroku/bin
+BP_PROFILE_DIR=$BP_DIR/.profile.d
+
+BIN_DIR=$BUILD_DIR/.heroku/bin
+PROFILE_DIR=$BUILD_DIR/.profile.d
+
+CACHE_BIN_DIR=$CACHE_DIR/.heroku/bin
+
+mkdir -p $BIN_DIR
+mkdir -p $PROFILE_DIR
+
+mkdir -p $CACHE_BIN_DIR
+
+######### Add BIN_DIR into PATH
+cp $BP_PROFILE_DIR/add_to_path.sh $PROFILE_DIR/add_to_path.sh
+
+######### Install BOINC launcher
+cp $BP_BIN_DIR/boinc $BIN_DIR/boinc
+chmod +x $BIN_DIR/boinc
+
+cp $BP_BIN_DIR/boinccmd $BIN_DIR/boinccmd
+chmod +x $BIN_DIR/boinccmd
