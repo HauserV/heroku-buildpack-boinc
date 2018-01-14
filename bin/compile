@@ -31,5 +31,5 @@ chmod +x $BIN_DIR/boinc
 cp $BP_BIN_DIR/boinccmd $BIN_DIR/boinccmd
 chmod +x $BIN_DIR/boinccmd
 
-cp $BP_BIN_DIR/run_boinc.sh $BIN_DIR/run_boinc.sh
-chmod +x $BIN_DIR/run_boinc.sh
+cp $BP_BIN_DIR/run_boinc $BIN_DIR/run_boinc
+chmod +x $BIN_DIR/run_boinc
