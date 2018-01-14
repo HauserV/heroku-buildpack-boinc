@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 export BOINC_PORT=${BOINC_PORT:-"3333"}
+export BOINC_PASSWD=${BOINC_PASSWD:-"1234"}
+
+echo $BOINC_PASSWD > gui_rpc_auth.cfg
 
 boinc --allow_multiple_clients --allow_remote_gui_rpc --gui_rpc_port $BOINC_PORT &
 
