@@ -9,4 +9,5 @@ while [ ! -f "gui_rpc_auth.cfg" ]; do
 done
 
 echo "Started BOINC with port ${BOINC_PORT}, password $(cat gui_rpc_auth.cfg)."
-fg
+
+while :; do sleep 86400; done
