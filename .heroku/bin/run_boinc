@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
 export BOINC_PORT=${BOINC_PORT:-"3333"}
+export BOINC_PASSWD=${BOINC_PASSWD:-"1234"}
 
-boinc --allow_multiple_clients --gui_rpc_port $BOINC_PORT &
+echo $BOINC_PASSWD > gui_rpc_auth.cfg
 
-while [ ! -f "gui_rpc_auth.cfg" ]; do
-   sleep 1
-done
+boinc --allow_multiple_clients --allow_remote_gui_rpc --gui_rpc_port $BOINC_PORT &
+
+#while [ ! -f "gui_rpc_auth.cfg" ]; do
+#   sleep 1
+#done
 
 echo "Started BOINC with port ${BOINC_PORT}, password $(cat gui_rpc_auth.cfg)."
 
